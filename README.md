@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+### Weather app using Reactjs and OpenWeatherMap API ###
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![preview](https://user-images.githubusercontent.com/129972263/232322247-f16a5d70-a52e-4ecc-a3d4-d714c43a3a2e.png)
 
-## Available Scripts
+Preview
 
-In the project directory, you can run:
+### Project details ###
+This app uses ReactJS for the gui and OpenWeatherMap's API To get weather data. This app mainly consists of 3 components.
 
-### `npm start`
+CityForm.js component is used to search for different city data. It takes 2 props, cityChange (Which is a function in app.js that changes the url to get a different city's weather data), and spinner (Which makes the spinner visible depending on if it is true or not). when the submit button is clicked, it runs the cityChange function with the city as a parameter.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Today.js displays today's weather from the json data given by the API. It takes Data as a prop. the entirety of the json data is sent into the component through this prop.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Slides.js displays a 5 day weather forecast. it takes Data as a prop. only the list json is sent into the prop. From there it runs a for loop which checks the dt_txt field, which shows both date and tim of the data to check if the date is different. the first 10 letters are the date, so it slices upto the 10th letter to check only date. it checks 2 variables d1 and d2. d1 is dt_txt of the previous json and d2 is dt_txt of the current json. if they are different, it pushes the data into an array called listdata. since the API Returns data in 3 hour intervals (first it returns the weather data at 12Am, then 3am, then 6am, etc), it actually pushes the 4th data from the current date to get the data for 12pm. the map function is then used on listdata to create the actual forecasts.
 
-### `npm test`
+axios library is used in app.js to get weather data from the api.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Project Setup ###
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Step 1: run npm install. this will install all the project dependencies for you.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Step 2: This app uses OpenWeatherMap's API To get weather data, so if you dont have an account on there, you will first have to sign up for the free plan at https://openweathermap.org/price
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Step 3: in the .env file, replace REACT_APP_API_KEY with your api key. You do not have to change REACT_APP_API_URL.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Step 4: you are good to go, Open command prompt and run npm start to start the project
