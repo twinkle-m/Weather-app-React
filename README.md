@@ -5,7 +5,7 @@
 Preview
 
 ### Project details ###
-This app uses ReactJS for the gui and OpenWeatherMap's API To get weather data. This app mainly consists of 3 components.
+This app uses ReactJS for the gui and OpenWeatherMap's API To get weather data. It also uses bootstrap 5 for the styling. This app mainly consists of 3 components.
 
 CityForm.js component is used to search for different city data. It takes 2 props, cityChange (Which is a function in app.js that changes the url to get a different city's weather data), and spinner (Which makes the spinner visible depending on if it is true or not). when the submit button is clicked, it runs the cityChange function with the city as a parameter.
 
